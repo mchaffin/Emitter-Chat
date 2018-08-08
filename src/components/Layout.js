@@ -5,7 +5,7 @@ import LoginForm from './LoginForm'
 import ChatContainer from './chats/ChatContainer'
 
 // Path needs to be changed to :3231/ when in dev 
-const socketUrl = "/"
+const socketUrl = "http://localhost:3231/"
 
 export default class Layout extends Component {
 	
