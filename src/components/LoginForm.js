@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { VERIFY_USER } from '../Events'
 //import { facebookAppId as appId } from '../config'
-import FacebookLogin from 'react-facebook-login'
+//import FacebookLogin from 'react-facebook-login'
 //import GoogleLogin from 'react-google-login'
 
 
@@ -58,14 +58,8 @@ export default class LoginForm extends Component {
 						id="nickname"
 						value={nickname}
 						onChange={this.handleChange}
-						placeholder={'Sparky is prolly taken'}
+						placeholder={'...'}
 						/>
-							<FacebookLogin
-					appId={197542140792520}
-					autoLoad={false}
-					fields="name,picture"
-					onClick={ ()=>{  } }
-					callback={ (res)=>{ this.setState({nickname:res.name}); this.verifyUserIsNotLoggedIn()} } />,
 						<div className="error">{error ? error:null}</div>
 
 				</form>
