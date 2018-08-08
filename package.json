@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "homepage": "http://vlw2.com/chat",
   "private": true,
+  "engines": {
+    "node": "8.9.4"
+  },
   "dependencies": {
     "express": "^4.16.3",
     "lodash": "^4.17.4",
