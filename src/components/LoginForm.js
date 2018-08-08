@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { VERIFY_USER } from '../Events'
-import { facebookAppId as appId } from '../config'
+//import { facebookAppId as appId } from '../config'
 import FacebookLogin from 'react-facebook-login'
-import GoogleLogin from 'react-google-login'
+//import GoogleLogin from 'react-google-login'
 
 
 export default class LoginForm extends Component {
@@ -61,7 +61,7 @@ export default class LoginForm extends Component {
 						placeholder={'Sparky is prolly taken'}
 						/>
 							<FacebookLogin
-					appId={appId}
+					appId={197542140792520}
 					autoLoad={false}
 					fields="name,picture"
 					onClick={ ()=>{  } }
