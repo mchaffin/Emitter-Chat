@@ -8,11 +8,12 @@ import { VERIFY_USER } from '../Events'
 export default class LoginForm extends Component {
 	constructor(props) {
 	  super(props);
-	
+		
 	  this.state = {
 	  	nickname:"",
 	  	error:""
 	  };
+	  console.log(process.env.REACT_APP_URL_VAR);
 	}
 
 	setUser = ({user, isUser})=>{

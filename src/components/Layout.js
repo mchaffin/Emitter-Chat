@@ -4,8 +4,9 @@ import { USER_CONNECTED, LOGOUT, VERIFY_USER } from '../Events'
 import LoginForm from './LoginForm'
 import ChatContainer from './chats/ChatContainer'
 
-// Path needs to be changed to :3231/ when in dev 
-const socketUrl = "/"
+// Path needs to be changed to localhost:3231/ when in dev 
+const socketUrl = process.env.REACT_APP_URL_VAR
+console.log(process.env.REACT_APP_URL_VAR)
 
 export default class Layout extends Component {
 	
