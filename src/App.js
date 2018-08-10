@@ -1,11 +1,37 @@
-import React, { Component } from '../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
+import React, { Component } from 'react';
 import Layout from './components/Layout'
+import LoginForm from './components/LoginForm'
+//import { Navbar, Button } from 'react-bootstrap';
 import './index.css';
 
 class App extends Component {
+
+  goTo(route) {
+    this.props.history.replace(`/${route}`)
+  }
+
+  login() {
+    this.props.auth.login();
+  }
+
+  logout() {
+    this.props.auth.logout();
+  }
+
+
   render() {
+
+    const { isAuthenticated } = this.props.auth;
+
     return (
-        <Layout />
+      <div>
+          {
+            !isAuthenticated() && (<LoginForm />)
+          }
+          {
+            isAuthenticated() && (<Layout />)
+          }
+      </div>
     );
   }
 }

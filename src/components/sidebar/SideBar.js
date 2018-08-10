@@ -1,10 +1,10 @@
-import React, { Component } from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
-import FAChevronDown from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-icons/lib/md/keyboard-arrow-down'
-import FAMenu from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-icons/lib/fa/list-ul'
-import FASearch from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-icons/lib/fa/search'
-import MdEject from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-icons/lib/md/eject'
+import React, { Component } from 'react';
+import FAChevronDown from 'react-icons/lib/md/keyboard-arrow-down'
+import FAMenu from 'react-icons/lib/fa/list-ul'
+import FASearch from 'react-icons/lib/fa/search'
+import MdEject from 'react-icons/lib/md/eject'
 import { SideBarOption } from './SideBarOption'
-import { last, get, differenceBy } from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/lodash'
+import { last, get, differenceBy } from 'lodash'
 import { createChatNameFromUsers } from '../../Factories'
 import PropTypes from 'prop-types'
 

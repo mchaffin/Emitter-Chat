@@ -1,4 +1,4 @@
-const uuidv4 = require('../../../../../../Library/Caches/typescript/2.9/node_modules/@types/uuid/v4')
+const uuidv4 = require('uuid/v4')
 
 /*
 *	createUser
