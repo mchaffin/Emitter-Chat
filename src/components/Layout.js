@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from '../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
 import io from 'socket.io-client'
 import { USER_CONNECTED, LOGOUT, VERIFY_USER } from '../Events'
 import LoginForm from './LoginForm'

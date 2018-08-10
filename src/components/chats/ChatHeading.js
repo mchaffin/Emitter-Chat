@@ -1,7 +1,7 @@
-import React from 'react';
-import FAVideo from 'react-icons/lib/fa/video-camera'
-import FAUserPlus from 'react-icons/lib/fa/user-plus'
-import MdEllipsisMenu from 'react-icons/lib/md/keyboard-control'
+import React from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
+import FAVideo from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-icons/lib/fa/video-camera'
+import FAUserPlus from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-icons/lib/fa/user-plus'
+import MdEllipsisMenu from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-icons/lib/md/keyboard-control'
 
 export default function({name, numberOfUsers}) {
 	

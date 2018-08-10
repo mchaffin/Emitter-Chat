@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react'
 import SideBar from '../sidebar/SideBar'
 import { COMMUNITY_CHAT, 
 					MESSAGE_SENT, 
@@ -11,7 +11,7 @@ import { COMMUNITY_CHAT,
 import ChatHeading from './ChatHeading'
 import Messages from '../messages/Messages'
 import MessageInput from '../messages/MessageInput'
-import { values, differenceBy, difference } from 'lodash'
+import { values, differenceBy, difference } from '../../../../../../../../Library/Caches/typescript/2.9/node_modules/@types/lodash'
 
 export default class ChatContainer extends Component {
 	constructor(props) {
