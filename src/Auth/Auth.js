@@ -31,6 +31,8 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         console.log(authResult)
+        // do something here to get profile data from authResult
+        //
         history.replace('/app');
       } else if (err) {
         history.replace('/');
@@ -46,6 +48,7 @@ export default class Auth {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('nickname', authResult.idTokenPayload.nickname)
     // navigate to the home route
     history.replace('/');
   }

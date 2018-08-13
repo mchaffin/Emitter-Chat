@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
-import Layout from './components/Layout'
-import LoginForm from './components/LoginForm'
-//import { Navbar, Button } from 'react-bootstrap';
+import Layout from './Components/Layout'
+//import LoginForm from './Components/LoginForm'
+import Login from './Login/Login'
+//import ChatContainer from './Components/chats/ChatContainer'
+import { Navbar, Button } from 'react-bootstrap';
 import './index.css';
+
+// {
+//   !isAuthenticated() && (<Login />)
+// }
+// {
+//   isAuthenticated() && (<Layout />)
+// }
 
 class App extends Component {
 
@@ -25,12 +34,72 @@ class App extends Component {
 
     return (
       <div>
-          {
-            !isAuthenticated() && (<LoginForm />)
-          }
-          {
-            isAuthenticated() && (<Layout />)
-          }
+        <Navbar fluid>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#">Auth0 - React</a>
+            </Navbar.Brand>
+            <Button
+              bsStyle="primary"
+              className="btn-margin"
+              onClick={this.goTo.bind(this, 'app')}
+            >
+              App
+            </Button>
+            {
+              !isAuthenticated() && (
+                  <Button
+                    id="qsLoginBtn"
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.login.bind(this)}
+                  >
+                    Log In
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
+                    id="qsLogoutBtn"
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.logout.bind(this)}
+                  >
+                    Log Out
+                  </Button>
+                )
+            }
+          </Navbar.Header>
+        </Navbar>
+
+        <div className="container">
+        {
+          isAuthenticated() && (
+              <h4>
+                You are logged in! Need to get profile and setuser here
+              
+                <Layout />
+              </h4>
+            )
+        }
+        {
+          !isAuthenticated() && (
+              <h4>
+                You are not logged in! Please{' '}
+                <a
+                  style={{ cursor: 'pointer' }}
+                  onClick={this.login.bind(this)}
+                >
+                  Log In
+                </a>
+                {' '}to continue.
+              </h4>
+            )
+        }
+      </div>
+         
+          
       </div>
     );
   }

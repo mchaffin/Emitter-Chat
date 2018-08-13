@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { VERIFY_USER } from '../Events'
-//import { facebookAppId as appId } from '../config'
-//import FacebookLogin from 'react-facebook-login'
-//import GoogleLogin from 'react-google-login'
-
 
 export default class LoginForm extends Component {
 	constructor(props) {

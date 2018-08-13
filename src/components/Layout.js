@@ -6,7 +6,6 @@ import ChatContainer from './chats/ChatContainer'
 
 // Path needs to be changed to localhost:3231/ when in dev 
 const socketUrl = process.env.REACT_APP_URL_VAR
-console.log(process.env.REACT_APP_URL_VAR)
 
 export default class Layout extends Component {
 	
@@ -31,7 +30,25 @@ export default class Layout extends Component {
 		socket.on('connect', this.reInitialize)
 		
 		this.setState({socket})
+
+		/* Experimental 
+		/*this.props.auth.getProfile((err, profile) => {
+			console.log(profile.nickname)
+			socket.emit(VERIFY_USER, profile.nickname, this.setUser1)
+		})*/
+
 	}
+	/*
+	*	Get Auth Zero User Profile nickname
+	*/
+	getNickname = ()=>{
+		const socket = io(socketUrl)
+		this.props.auth.getProfile((err, profile) => {
+			console.log(profile.nickname)
+			socket.emit(VERIFY_USER, profile.nickname, this.setUser1)
+		})
+	}
+
 	
 	// Reconnects user if needed
 	reInitialize = ()=>{
@@ -56,6 +73,15 @@ export default class Layout extends Component {
 		this.setState({ user })
 	}
 
+	/* Experimental */
+	setUser1 = ({user, isUser})=>{
+		if(isUser){
+			console.log("User name taken")
+		}else{
+			this.setState({ user })
+		}
+	}
+
 	/*
 	*	Sets the user property in state to null.
 	*/
@@ -65,7 +91,7 @@ export default class Layout extends Component {
 		this.setState({ user:null })
 
 	}
-
+	
 
 	render() {
 		const { socket, user } = this.state

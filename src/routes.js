@@ -3,10 +3,10 @@ import { Route, Router } from 'react-router-dom';
 import App from './App';
 import Profile from './Profile/Profile';
 import Login from './Login/Login';
+import Layout from './Components/Layout';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
-import LoginForm from './components/LoginForm';
 
 const auth = new Auth();
 
@@ -21,6 +21,7 @@ export const makeMainRoutes = () => {
       <Router history={history}>
         <div>
           <Route path="/" render={(props) => <Login auth={auth} {...props} />} />
+          <Route path="/chat" render={(props) => <Layout auth={auth} {...props} />} />
           <Route path="/app" render={(props) => <App auth={auth} {...props} />} />
           <Route path="/profile" render={(props) => <Profile auth={auth} {...props} />} />
           <Route path="/callback" render={(props) => {

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class Login extends Component {
   
   login() {
     this.props.auth.login();
   }
   render() {
     const { isAuthenticated } = this.props.auth;
+
+    
     return (
       <div className="container">
         {
@@ -35,4 +37,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Login;
