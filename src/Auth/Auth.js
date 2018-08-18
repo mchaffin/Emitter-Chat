@@ -32,8 +32,8 @@ export default class Auth {
         this.setSession(authResult);
         console.log(authResult)
         // do something here to get profile data from authResult
-        //
-        history.replace('/app');
+        // set user state to nickname here
+        history.replace('/chat');
       } else if (err) {
         history.replace('/');
         console.log(err);
@@ -58,6 +58,7 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('nickname')
     // navigate to the home route
     history.replace('/');
   }

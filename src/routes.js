@@ -17,18 +17,18 @@ const handleAuthentication = ({location}) => {
 }
 
 export const makeMainRoutes = () => {
-  return (
-      <Router history={history}>
-        <div>
-          <Route path="/" render={(props) => <Login auth={auth} {...props} />} />
-          <Route path="/chat" render={(props) => <Layout auth={auth} {...props} />} />
-          <Route path="/app" render={(props) => <App auth={auth} {...props} />} />
-          <Route path="/profile" render={(props) => <Profile auth={auth} {...props} />} />
-          <Route path="/callback" render={(props) => {
-            handleAuthentication(props);
-            return <Callback {...props} /> 
-          }}/>
-        </div>
-      </Router>
-  );
-}
+    return (
+        <Router history={history}>
+          <div>
+            <Route path="/" render={(props) => <Login auth={auth} {...props} />} />
+            <Route path="/chat" render={(props) => <Layout auth={auth} {...props} />} />
+            <Route path="/app" render={(props) => <App auth={auth} {...props} />} />
+            <Route path="/profile" render={(props) => <Profile auth={auth} {...props} />} />
+            <Route path="/callback" render={(props) => {
+              handleAuthentication(props);
+              return <Callback {...props} /> 
+            }}/>
+          </div>
+        </Router>
+    );
+  }

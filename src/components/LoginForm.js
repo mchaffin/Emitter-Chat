@@ -6,11 +6,14 @@ export default class LoginForm extends Component {
 	  super(props);
 		
 	  this.state = {
-	  	nickname:"",
+	  	nickname:localStorage.getItem('nickname'),
 	  	error:""
 	  };
-	  console.log(process.env.REACT_APP_URL_VAR);
 	}
+
+	login() {
+		this.props.auth.login();
+	  }
 
 	setUser = ({user, isUser})=>{
 
@@ -42,6 +45,7 @@ export default class LoginForm extends Component {
 
 	render() {	
 		const { nickname, error } = this.state
+		
 		return (
 			<div className="login">
 				<form onSubmit={this.handleSubmit} className="login-form" >
@@ -60,6 +64,7 @@ export default class LoginForm extends Component {
 						<div className="error">{error ? error:null}</div>
 
 				</form>
+				
 			</div>
 		);
 	}

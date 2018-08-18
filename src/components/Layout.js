@@ -13,9 +13,11 @@ export default class Layout extends Component {
 	  super(props);
 		
 	  this.state = {
-	  	socket:null,
-	  	user:null
+		  socket:null,
+		  user:null,
+		  error:""
 	  };
+
 	}
 
 	componentWillMount() {
@@ -27,58 +29,30 @@ export default class Layout extends Component {
 	*/
 	initSocket = ()=>{
 		const socket = io(socketUrl)
-		socket.on('connect', this.reInitialize)
-		
-		this.setState({socket})
-
-		/* Experimental 
-		/*this.props.auth.getProfile((err, profile) => {
-			console.log(profile.nickname)
-			socket.emit(VERIFY_USER, profile.nickname, this.setUser1)
-		})*/
-
-	}
-	/*
-	*	Get Auth Zero User Profile nickname
-	*/
-	getNickname = ()=>{
-		const socket = io(socketUrl)
-		this.props.auth.getProfile((err, profile) => {
-			console.log(profile.nickname)
-			socket.emit(VERIFY_USER, profile.nickname, this.setUser1)
+		socket.on('connect', this.reInitialize)	
+		socket.emit(VERIFY_USER, localStorage.getItem('nickname'), ({user, isUser})=> {
+			//TODO: some error handling if isUser is not true 
+			if(!isUser){
+				this.setState({ user, socket })
+				socket.emit(USER_CONNECTED, user);
+			}else{
+				this.setState({ user:null, socket, error:"No Socket" })
+			}
 		})
-	}
 
+
+	}
 	
 	// Reconnects user if needed
 	reInitialize = ()=>{
-		const { user, socket } = this.state
+		const { socket, user } = this.state
 		if(user){
 			socket.emit(VERIFY_USER, user.name, ({isUser, user})=>{ 
 				if(isUser)
-					this.setUser(null)
+					this.setState({user:null})
 				else 
-					this.setUser(user)
+					this.setState({user})
 			})				
-		}
-	}
-
-	/*
-	* 	Sets the user property in state 
-	*	@param user {id:number, name:string}
-	*/	
-	setUser = (user)=>{
-		const { socket } = this.state
-		socket.emit(USER_CONNECTED, user);
-		this.setState({ user })
-	}
-
-	/* Experimental */
-	setUser1 = ({user, isUser})=>{
-		if(isUser){
-			console.log("User name taken")
-		}else{
-			this.setState({ user })
 		}
 	}
 
@@ -89,18 +63,29 @@ export default class Layout extends Component {
 		const { socket } = this.state
 		socket.emit(LOGOUT)
 		this.setState({ user:null })
+		this.props.auth.logout()
 
 	}
-	
+
+	goTo(route) {
+		this.props.history.replace(`/${route}`)
+	  }
+
+	login() {
+		this.props.auth.login()
+	  }
 
 	render() {
 		const { socket, user } = this.state
+		const { isAuthenticated } = this.props.auth
+
 		return (
 			<div className="container">
 				{
 					!user ?	
-					<LoginForm socket={socket} setUser={this.setUser} />
+					<div>You got no user</div>
 					:
+					isAuthenticated() &&
 					<ChatContainer socket={socket} user={user} logout={this.logout}/>
 				}
 			</div>
