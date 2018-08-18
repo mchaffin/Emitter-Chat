@@ -37,7 +37,7 @@ module.exports = function(socket){
 		sendTypingFromUser = sendTypingToChat(user.name)
 
 		io.emit(USER_CONNECTED, connectedUsers)
-		console.log(connectedUsers);
+		console.log("Connected Users:", connectedUsers);
 
 	})
 	
@@ -54,7 +54,7 @@ module.exports = function(socket){
 	socket.on(LOGOUT, ()=>{
 		connectedUsers = removeUser(connectedUsers, socket.user.name)
 		io.emit(USER_DISCONNECTED, connectedUsers)
-		console.log("Disconnect", connectedUsers);
+		console.log("Logout", connectedUsers);
 
 	})
 
