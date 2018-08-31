@@ -13,13 +13,6 @@ class Login extends Component {
     return (
       <div className="container">
         {
-          isAuthenticated() && (
-              <h4>
-                You are logged in!
-              </h4>
-            )
-        }
-        {
           !isAuthenticated() && (
               <h4>
                 You are not logged in! Please{' '}
@@ -27,7 +20,7 @@ class Login extends Component {
                   style={{ cursor: 'pointer' }}
                   onClick={this.login.bind(this)}
                 >
-                  Log In
+                  <b>Log In</b>
                 </a>
                 {' '}to continue.
               </h4>

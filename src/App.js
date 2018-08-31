@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import Layout from './Components/Layout'
-//import LoginForm from './Components/LoginForm'
-import Login from './Login/Login'
-//import ChatContainer from './Components/chats/ChatContainer'
 import { Navbar, Button } from 'react-bootstrap';
 import './index.css';
-
-// {
-//   !isAuthenticated() && (<Login />)
-// }
-// {
-//   isAuthenticated() && (<Layout />)
-// }
 
 class App extends Component {
 
@@ -37,7 +27,7 @@ class App extends Component {
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Auth0 - React</a>
+              <h3>Auth0 - React</h3>
             </Navbar.Brand>
             <Button
               bsStyle="primary"
